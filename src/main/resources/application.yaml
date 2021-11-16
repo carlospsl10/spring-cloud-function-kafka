@@ -1,4 +1,15 @@
 spring:
   cloud:
     function:
-      definition: uppercase|reverseReactive,uppercase
+      definition: uppercase|reverse
+    stream:
+      kafka:
+        binder:
+          brokers: localhost:9092
+          replication-factor: 1
+      bindings:
+        user-in-0:
+          destination: user
+          content-type: plain/text
+
+
