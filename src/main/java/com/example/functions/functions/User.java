@@ -1,4 +1,4 @@
-package com.example.functions;
+package com.example.functions.functions;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

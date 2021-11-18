@@ -9,25 +9,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/user")
-public class UserPublisher {
-
+@RequestMapping("/ticket")
+public class TicketPublisher {
     private final StreamBridge bridge;
 
-    public UserPublisher(StreamBridge bridge) {
+    public TicketPublisher(StreamBridge bridge) {
         this.bridge = bridge;
     }
 
     @PostMapping("/{event}")
     public void userSupplier(@PathVariable("event") String event) {
         var message = MessageBuilder
-                .withPayload(User.builder().name("Carlos").build())
+                .withPayload(User.builder().name("Col").build())
                 .setHeader("event_type", event)
                 .build();
 
-        bridge.send("user", message);
+        bridge.send("ticket", message);
     }
 }
-
-
-

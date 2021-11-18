@@ -1,3 +1,4 @@
+
 spring:
   cloud:
     function:
@@ -5,22 +6,19 @@ spring:
       definition: functionRouter
       scan.packages: com.example.functions.functions
       #routing-expression: "headers['type']==userCreatedEvent ? 'userCreatedEvent' : 'userUpdatedEvent'"
-#    stream:
-#      function:
-#        routing:
-#          enabled: true
+    stream:
       kafka:
         binder:
           brokers: localhost:9092
           replication-factor: 1
-#      bindings:
-#        user-in-0:
-#          binder: kafka #optional
-#          destination: user
-#          content-type: text/plain
-#          group: user-consumer
-#        userSupplier-out-0:
-#          destination: user
-#          content-type: text/plain
-
+      bindings:
+        functionRouter-in-0:
+          binder: kafka #optional
+          destination: user,ticket
+          content-type: text/plain
+          group: user-consumer
+logging:
+  level:
+    root: INFO
+    org.apache.kafka.clients: ERROR
 

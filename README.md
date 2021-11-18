@@ -14,3 +14,9 @@ Part 2
 
 curl -X POST http://localhost:8080/user/USER_CREATED_EVENT
 curl -X POST http://localhost:8080/user/USER_UPDATED_EVENT
+
+Part 2.1
+
+curl -X POST http://localhost:8080/ticket/TICKET_CREATED_EVENT
+
+

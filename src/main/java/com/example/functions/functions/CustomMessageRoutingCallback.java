@@ -1,4 +1,4 @@
-package com.example.functions;
+package com.example.functions.functions;
 
 import org.springframework.cloud.function.context.MessageRoutingCallback;
 import org.springframework.messaging.Message;

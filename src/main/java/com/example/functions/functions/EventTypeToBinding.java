@@ -1,4 +1,4 @@
-package com.example.functions;
+package com.example.functions.functions;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,7 +7,8 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public enum EventTypeToBinding {
     USER_CREATED_EVENT("userCreatedEvent"),
-    USER_UPDATED_EVENT("userUpdatedEvent");
+    USER_UPDATED_EVENT("userUpdatedEvent"),
+    TICKET_CREATED_EVENT("ticketCreatedEvent");
 
     private final String binding;
 }
