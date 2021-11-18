@@ -23,6 +23,7 @@ public class UserPublisher {
         var message = MessageBuilder
                 .withPayload(User.builder().name("Carlos").build())
                 .setHeader("event_type", event)
+                .setHeader("domain", "User")
                 .build();
 
         bridge.send("user", message);

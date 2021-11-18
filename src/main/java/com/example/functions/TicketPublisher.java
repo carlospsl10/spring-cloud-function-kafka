@@ -22,6 +22,7 @@ public class TicketPublisher {
         var message = MessageBuilder
                 .withPayload(User.builder().name("Col").build())
                 .setHeader("event_type", event)
+                .setHeader("domain", "Ticket")
                 .build();
 
         bridge.send("ticket", message);
