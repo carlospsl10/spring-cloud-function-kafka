@@ -1,6 +1,10 @@
-zsh:1: no matches found: */src/test/**
-Signed-off-by: Carlos Avendano <carlos.avendanoa@perficient.com>
-m.xml.tag
+HELP.md
+*target/**
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**
+!**/src/test/**
+pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
 pom.xml.next
@@ -17,6 +21,9 @@ buildNumber.properties
 .settings
 .springBeans
 .sts4-cache
+
+.DS_Store
+*.DS_Store
 
 ### IntelliJ IDEA ###
 .idea
@@ -37,5 +44,3 @@ build/
 
 ### PIT test ###
 **/pitMutationHistory
-Signed-off-by: garlos Avendano <carlos.avendanoa@perficient.com>
-

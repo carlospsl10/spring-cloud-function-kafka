@@ -1,9 +1,13 @@
 spring:
   cloud:
     function:
-      definition: uppercase|reverse
-    stream:
+      #definition: uppercase|reverse;userCreatedEvent;userUpdatedEvent;userSupplier
+      definition: functionRouter
+      #routing-expression: "headers['type']==userCreatedEvent ? 'userCreatedEvent' : 'userUpdatedEvent'"
+    
       kafka:
         binder:
           brokers: localhost:9092
           replication-factor: 1
+
+
