@@ -3,6 +3,7 @@ spring:
     function:
       #definition: uppercase|reverse;userCreatedEvent;userUpdatedEvent;userSupplier
       definition: functionRouter
+      scan.packages: com.example.functions.functions
       #routing-expression: "headers['type']==userCreatedEvent ? 'userCreatedEvent' : 'userUpdatedEvent'"
 #    stream:
 #      function:
@@ -12,5 +13,14 @@ spring:
         binder:
           brokers: localhost:9092
           replication-factor: 1
+#      bindings:
+#        user-in-0:
+#          binder: kafka #optional
+#          destination: user
+#          content-type: text/plain
+#          group: user-consumer
+#        userSupplier-out-0:
+#          destination: user
+#          content-type: text/plain
 
 

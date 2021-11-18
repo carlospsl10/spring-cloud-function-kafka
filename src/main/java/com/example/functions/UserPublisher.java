@@ -1,25 +1,15 @@
 package com.example.functions;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.cloud.stream.function.StreamBridge;
-import org.springframework.context.annotation.Bean;
-import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.EmitterProcessor;
-import reactor.core.publisher.Flux;
-
-import java.util.function.Supplier;
 
 @RestController
 @RequestMapping("/user")
 public class UserPublisher {
-    private static final String SPRING_CLOUD_STREAM_SENDTO_DESTINATION = "spring.cloud.stream.sendto.destination";
 
     private final StreamBridge bridge;
 
@@ -27,12 +17,11 @@ public class UserPublisher {
         this.bridge = bridge;
     }
 
-    @PostMapping
-    public void userSupplier() {
+    @PostMapping("/{event}")
+    public void userSupplier(@PathVariable("event") String event) {
         var message = MessageBuilder
                 .withPayload(User.builder().name("Carlos").build())
-                .setHeader(SPRING_CLOUD_STREAM_SENDTO_DESTINATION, "functionRouter-in-0")
-                .setHeader("event_type", "USER_UPDATED_EVENT")
+                .setHeader("event_type", event)
                 .build();
 
         bridge.send("functionRouter-in-0", message);
@@ -41,10 +30,3 @@ public class UserPublisher {
 
 
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
- class User {
-    private String name;
-}
